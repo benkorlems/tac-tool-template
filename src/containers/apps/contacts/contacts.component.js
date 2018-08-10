@@ -10,7 +10,7 @@ import contactsList from "../../../assets/data/apps/contacts/contacts.json";
 import ContactsList from "./contacts-list/contacts-list.component";
 //import ContactDetails from "./contact-details/contact-details.component";
 import NoContacts from "./no-contacts/no-contacts.component";
-import AnalyticsComponent from "./analytics/analytics.component";
+import TabbedNavComponent from "./tabbed.nav.component";
 
 import themeStyles from "./contacts.theme.style";
 import scss from "./contacts.module.scss";
@@ -33,7 +33,7 @@ class Contacts extends React.Component {
           onSelect={this.selectContact}
         />
         {this.state.selectedContact ? (
-          <AnalyticsComponent selectedContact={this.state.selectedContact} />
+          <TabbedNavComponent selectedContact={this.state.selectedContact} />
         ) : (
           <NoContacts />
         )}
