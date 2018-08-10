@@ -9,36 +9,19 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableFooter from "@material-ui/core/TableFooter";
+import ScrollAlarmDialog from "../../components/scroll-dialog-widget/scroll-dialog.alarms.component";
+import ScrollSessionDialog from "../../components/scroll-dialog-widget/scroll-dialog.session.component";
 
-import genericSearchData from "../../../../../../assets/data/dashboards/generic-search.json";
-import paidSearchData from "../../../../../../assets/data/dashboards/paid-search.json";
+import portStatusData from "../../../../../../assets/data/dashboards/port-status-data.json";
 
 import scss from "./table-widget.module.scss";
-
-const tabs = [
-  {
-    title: "Brand Paid Search"
-  },
-  {
-    title: "Generic Search"
-  }
-];
 
 class TableWidget extends React.Component {
   state = {
     activeTabIndex: 0,
     page: 0,
     rowsPerPage: 5,
-    data: genericSearchData
-  };
-
-  handleChangePage = (event, page) => {
-    this.setState({ page });
-  };
-
-  changeTab = (event, tabIndex) => {
-    const newData = tabIndex === 0 ? genericSearchData : paidSearchData;
-    this.setState({ activeTabIndex: tabIndex, data: newData, page: 0 });
+    data: portStatusData
   };
 
   render() {
@@ -46,68 +29,33 @@ class TableWidget extends React.Component {
 
     return (
       <div className={scss["portal-chart-tabs"]}>
-        <Tabs
-          className={scss["portal-chart-tabs-container"]}
-          indicatorColor="primary"
-          textColor="primary"
-          value={this.state.activeTabIndex}
-          onChange={this.changeTab}
-        >
-          {tabs.map(tab => (
-            <Tab
-              classes={{
-                root: scss["portal-chart-tabs-root"],
-                wrapper: scss["portal-chart-tabs-wrapper"]
-              }}
-              label={
-                <Typography variant="caption" gutterBottom>
-                  {tab.title}
-                </Typography>
-              }
-              key={tab.title}
-            />
-          ))}
-        </Tabs>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Page</TableCell>
-              <TableCell numeric>Page Views</TableCell>
-              <TableCell numeric>Duration</TableCell>
-              <TableCell numeric>Conversion Rate</TableCell>
+              <TableCell>Port</TableCell>
+              <TableCell>Configuration State</TableCell>
+              <TableCell>Admin State</TableCell>
+              <TableCell>Operational Status</TableCell>
+              <TableCell>Speed/Duplex</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map(n => (
-                <TableRow key={n.url}>
-                  <TableCell>{n.url}</TableCell>
-                  <TableCell numeric>{n.views}</TableCell>
-                  <TableCell numeric>{n.duration}</TableCell>
-                  <TableCell numeric>{n.conversion}</TableCell>
-                </TableRow>
-              ))}
+            {data.map(n => (
+              <TableRow key={n.port}>
+                <TableCell component="th" scope="row">
+                  {n.port}
+                </TableCell>
+                <TableCell>{n.configStatus}</TableCell>
+                <TableCell>{n.adminStatus}</TableCell>
+                <TableCell>{n.operationalStatus}</TableCell>
+                <TableCell>{n.speed}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TablePagination
-                colSpan={4}
-                count={genericSearchData.length}
-                rowsPerPage={rowsPerPage}
-                rowsPerPageOptions={[5]}
-                page={page}
-                backIconButtonProps={{
-                  "aria-label": "Previous Page"
-                }}
-                nextIconButtonProps={{
-                  "aria-label": "Next Page"
-                }}
-                onChangePage={this.handleChangePage}
-              />
-            </TableRow>
-          </TableFooter>
+          <TableFooter />
         </Table>
+        <ScrollAlarmDialog />
+        <ScrollSessionDialog />
       </div>
     );
   }
