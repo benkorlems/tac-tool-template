@@ -19,16 +19,8 @@ const NoContacts = props => {
         classes["portal-contacts-no-contacts"]
       )}
     >
-      <div
-        className={classNames(
-          scss["portal-contacts-no-contacts__icon"],
-          classes["portal-contacts-no-contacts__icon"]
-        )}
-      >
-        <div className={scss["portal-contacts-no-contacts__paper"]} />
-      </div>
       <Typography component="h2">
-        Please search for a customer and select to begin
+        Please search for a customer and select to begin...
       </Typography>
     </div>
   );

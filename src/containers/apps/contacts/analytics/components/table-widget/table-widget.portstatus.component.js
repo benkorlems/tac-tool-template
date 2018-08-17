@@ -54,8 +54,12 @@ class TableWidget extends React.Component {
           </TableBody>
           <TableFooter />
         </Table>
-        <ScrollAlarmDialog />
-        <ScrollSessionDialog />
+        <span>
+          <ScrollAlarmDialog />
+        </span>
+        <span>
+          <ScrollSessionDialog />
+        </span>
       </div>
     );
   }

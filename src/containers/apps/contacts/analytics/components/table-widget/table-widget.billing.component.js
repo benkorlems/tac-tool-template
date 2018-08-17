@@ -13,7 +13,7 @@ import TableFooter from "@material-ui/core/TableFooter";
 import genericSearchData from "../../../../../../assets/data/dashboards/generic-search.json";
 import paidSearchData from "../../../../../../assets/data/dashboards/paid-search.json";
 
-import ScrollDialog from "../../components/scroll-dialog-widget/scroll-dialog.component";
+import ScrollBillingDialog from "../../components/scroll-dialog-widget/scroll-dialog.billing.component";
 
 import scss from "./table-widget.module.scss";
 
@@ -76,7 +76,7 @@ class TableWidget extends React.Component {
             </TableRow>
           </TableFooter>
         </Table>
-        <ScrollDialog />
+        <ScrollBillingDialog />
       </div>
     );
   }

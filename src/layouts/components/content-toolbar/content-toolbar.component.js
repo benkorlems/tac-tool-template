@@ -103,11 +103,7 @@ class ContentToolbar extends React.Component {
           {setTitle() || "Route Not Found"}
         </Typography>
         <span className="portal-flex" />
-        <IconButton
-          color="inherit"
-          aria-label="change theme"
-          onClick={this.handleOpenThemeClick}
-        />
+
         <IconButton
           color="inherit"
           aria-label="change layout"
