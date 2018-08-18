@@ -76,7 +76,7 @@ class TableWidget extends React.Component {
             </TableRow>
           </TableFooter>
         </Table>
-        <ScrollBillingDialog />
+        <ScrollBillingDialog variant="raised" />
       </div>
     );
   }

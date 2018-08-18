@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import compose from "recompose/compose";
 import classNames from "classnames";
@@ -19,13 +19,16 @@ import scss from "./login.module.scss";
 
 import logoImage from "../../../assets/images/portal-logo.png";
 
-const Login = props => {
-  const { classes, width } = props;
+class Login extends Component {
+  constructor(props) {
+    super(props);
 
-  // Flip container to column on mobile screens.
-  const panelDirection = width === "xs" ? "column" : "row";
+    const { classes, width } = this.props;
+    // Flip container to column on mobile screens.
+    const panelDirection = width === "xs" ? "column" : "row";
+  }
 
-  return (
+  render() {
     <Grid
       container
       direction="row"
@@ -76,18 +79,18 @@ const Login = props => {
                 />
               </CardContent>
               <CardActions className={scss["login-actions"]}>
-                <Button href="/login" color="primary" variant="raised">
+                <Button color="primary" variant="raised">
                   Login
                 </Button>
-                <Button href="/forgot-password">Forgot Password</Button>
+                <Button>Forgot Password</Button>
               </CardActions>
             </Card>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  );
-};
+    </Grid>;
+  }
+}
 
 Login.propTypes = {
   classes: PropTypes.shape({}).isRequired,
