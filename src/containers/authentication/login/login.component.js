@@ -1,4 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import {
+  loginUser,
+  logoutUser,
+  clearError
+} from "../../../actionCreators/authActionCreators";
+
 import PropTypes from "prop-types";
 import compose from "recompose/compose";
 import classNames from "classnames";
@@ -11,6 +20,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -32,25 +42,44 @@ class Login extends Component {
 
     //initialize state
     this.state = {
-      emailValue: "",
-      passwordValue: ""
+      email: "",
+      password: "",
+      error: "",
+      authenticating: false
     };
 
-    this.handleEmailInput = event => {
-      this.setState({
-        emailValue: event.target.value
-      });
-    };
+    this.onChange = this.onChange.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleRequestAccess = this.handleRequestAccess.bind(this);
+  }
 
-    this.handlePasswordInput = event => {
-      this.setState({
-        passwordValue: event.target.value
-      });
-    };
+  componentDidMount() {
+    if (this.props.auth.authenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
 
-    this.handleForgotPassword = () => {
-      history.push("/home");
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.authenticated) {
+      this.props.history.push("/dashboard");
+    }
+    this.setState({ error: nextProps.auth.error });
+    this.setState({ authenticating: nextProps.auth.authenticating });
+  }
+
+  handleLogin() {
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
     };
+    this.props.loginUser(userData);
+  }
+  handleRequestAccess() {
+    this.props.history.push("/register");
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -87,9 +116,9 @@ class Login extends Component {
                 <CardActions>
                   <Button
                     fullWidth
-                    href="/register"
                     color="secondary"
                     variant="raised"
+                    onClick={this.handleRequestAccess}
                   >
                     Request access
                   </Button>
@@ -100,22 +129,44 @@ class Login extends Component {
               <Card className={scss.card}>
                 <CardContent>
                   <TextField
+                    name="email"
                     label="Email Address"
                     fullWidth
-                    value={this.state.value}
-                    onChange={this.handleChange}
+                    value={this.state.email}
+                    onChange={this.onChange}
+                    onClick={this.props.clearError}
                   />
+                  <FormHelperText error="true">
+                    {this.state.error}
+                  </FormHelperText>
                   <TextField
+                    name="password"
                     label="Password"
                     fullWidth
                     margin="normal"
                     type="password"
+                    value={this.state.password}
+                    onChange={this.onChange}
+                    onClick={this.props.clearError}
                   />
+                  <FormHelperText error="true">
+                    {this.state.error}
+                  </FormHelperText>
                 </CardContent>
                 <CardActions className={scss["login-actions"]}>
-                  <Button href="/login" color="primary" variant="raised">
-                    Login
-                  </Button>
+                  {this.state.authenticating ? (
+                    <Button color="primary" variant="raised" disabled>
+                      Logging in ...
+                    </Button>
+                  ) : (
+                    <Button
+                      color="primary"
+                      variant="raised"
+                      onClick={this.handleLogin}
+                    >
+                      Login
+                    </Button>
+                  )}
                   <Button onClick={this.handleForgotPassword}>
                     Forgot Password
                   </Button>
@@ -129,6 +180,21 @@ class Login extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    themeConfig: state.theme,
+    auth: state.auth
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: bindActionCreators(loginUser, dispatch),
+    logoutUser: bindActionCreators(logoutUser, dispatch),
+    clearError: bindActionCreators(clearError, dispatch)
+  };
+};
+
 Login.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired
@@ -136,5 +202,9 @@ Login.propTypes = {
 
 export default compose(
   withWidth(),
-  withStyles(themeStyles, { withTheme: true })
+  withStyles(themeStyles, { withTheme: true }),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(Login);

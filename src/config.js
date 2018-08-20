@@ -20,7 +20,7 @@ const iconStyle = {
 export const menuItems = [
   {
     title: "Home",
-    href: "/home",
+    href: "/dashboard",
     icon: <HomeIcon style={iconStyle} />
   },
   {

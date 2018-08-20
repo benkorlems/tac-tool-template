@@ -4,10 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import asyncComponent from "./components/async.component";
 import Compact from "./layouts/layout-compact/layout-compact.component";
 import NoLayout from "./layouts/layout-none/layout-none.component";
-import LoginPage from "./containers/authentication/login/login.component";
 import ContactsApp from "./containers/apps/contacts/contacts.component";
-
-// DASHBOARD ROUTE
 
 // APP ROUTES
 const AsyncContactsApp = asyncComponent(() =>
@@ -72,21 +69,14 @@ export default ({ childProps, layout }) => {
       <AppRoute
         path="/"
         exact
-        component={LoginPage}
+        component={AsyncLogin}
         props={childProps}
         layout={NoLayout}
       />
       <AppRoute
-        path="/home"
+        path="/dashboard"
         exact
         component={AsyncContactsApp}
-        props={childProps}
-        layout={activeLayout}
-      />
-      <AppRoute
-        path="/apps/contacts"
-        exact
-        component={ContactsApp}
         props={childProps}
         layout={activeLayout}
       />

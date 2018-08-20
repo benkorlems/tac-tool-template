@@ -1,21 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import './index.css';
-import App from './app.component';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import portalApp from './reducers';
-import registerServiceWorker from './registerServiceWorker';
-import WebFont from 'webfontloader';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./index.css";
+import App from "./app.component";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "./reducers";
+import registerServiceWorker from "./registerServiceWorker";
+import WebFont from "webfontloader";
 
 WebFont.load({
   google: {
-    families: ['Barlow:300,400,400i,500,600,700']
+    families: ["Barlow:300,400,400i,500,600,700"]
   }
 });
 
-const store = createStore(portalApp);
+const middleware = [thunk];
+const initialState = {};
+const store = createStore(
+  rootReducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -23,6 +31,6 @@ ReactDOM.render(
       <App />
     </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 registerServiceWorker();
