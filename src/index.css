@@ -5,14 +5,16 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   width: 100%;
   height: 100%;
 }
 
 body {
-  font-family: 'Barlow', sans-serif;
+  font-family: "Barlow", sans-serif;
 }
 
 .portal-hide-scrollbars {
@@ -37,7 +39,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 500px;
-  background: rgba(0,0,0,0.050);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .portal-pages__header-demo {
@@ -54,10 +56,12 @@ body {
 .portal-pages__content-inner {
   margin-top: -200px;
   padding: 16px;
-  box-shadow: 0px -40px 100px -50px rgba(0, 0, 0, 0.3), -20px 0px 40px -50px rgba(0, 0, 0, 0.2), 20px 0px 40px -50px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px -40px 100px -50px rgba(0, 0, 0, 0.3),
+    -20px 0px 40px -50px rgba(0, 0, 0, 0.2),
+    20px 0px 40px -50px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transform: translateY(20px);
-  animation: portal-pages__content-inner .3s forwards 1 ease-in-out;
+  animation: portal-pages__content-inner 0.3s forwards 1 ease-in-out;
 }
 
 @keyframes portal-pages__content-inner {
@@ -69,4 +73,70 @@ body {
     opacity: 1;
     transform: translateY(0px);
   }
+}
+
+/* Led Styling */
+.ont-status .card-box {
+  max-height: 340px;
+}
+.ont-img {
+  text-align: center;
+}
+.led-lights {
+  margin-top: -12px;
+}
+.led-row1 {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 12px;
+}
+.led-row2 {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 12px;
+}
+.led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 15px;
+  background-color: black;
+}
+.led_on {
+  background-color: #4ce600;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #4ce600 0 -1px 9px,
+    #89ff00 0 2px 12px;
+}
+
+.led_on_red {
+  background-color: #e60000;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #e60000 0 -1px 9px,
+    #e60000 0 2px 12px;
+}
+
+p.led-label {
+  margin-left: 7px;
+}
+
+.pon_animate {
+  animation: blinkGreen 1.5s infinite;
+}
+
+#refresh-btn {
+  margin-bottom: 1.5em;
+}
+
+.refresh-text {
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  transition: all 2.5s ease-out;
+}
+.refresh-text:hover {
+  cursor: pointer;
+  background-color: #e0e0e0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 3px 1px, inset #d3d3d3 0 -1px 3px,
+    #989898 0 2px 3px;
 }

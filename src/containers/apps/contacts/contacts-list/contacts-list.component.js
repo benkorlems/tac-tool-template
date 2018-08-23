@@ -62,10 +62,7 @@ class ContactsList extends React.Component {
         divider
         button
       >
-        <Avatar
-          alt={contact.name}
-          src={`${process.env.PUBLIC_URL}/${contact.photo}`}
-        />
+        <Avatar>H</Avatar>
         <ListItemText
           primary={contact.name + " " + contact.surname}
           secondary={contact.phone}

@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 import asyncComponent from "./components/async.component";
 import Compact from "./layouts/layout-compact/layout-compact.component";
 import NoLayout from "./layouts/layout-none/layout-none.component";
-import ContactsApp from "./containers/apps/contacts/contacts.component";
 
 // APP ROUTES
 const AsyncContactsApp = asyncComponent(() =>

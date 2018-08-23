@@ -12,7 +12,6 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import withTheme from "@material-ui/core/styles/withTheme";
 import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 
-import { ExitToApp } from "@material-ui/icons";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
@@ -60,10 +59,6 @@ class ContentToolbar extends React.Component {
     this.setState({ themeMenuEl: null, themeMenuOpen: false });
   };
 
-  handleLogout = () => {
-    alert("Clicked");
-  };
-
   handleDirectionChange = (event, checked) => {
     this.props.changeThemeDirection({
       direction: checked === true ? "rtl" : "ltr"
@@ -90,16 +85,6 @@ class ContentToolbar extends React.Component {
           {setTitle() || "Route Not Found"}
         </Typography>
         <span className="portal-flex" />
-
-        <IconButton
-          color="inherit"
-          aria-label="logout of App"
-          onClick={this.handleLogout}
-        >
-          <Link to="/">
-            <ExitToApp />
-          </Link>
-        </IconButton>
 
         <IconButton color="inherit" aria-label="user account">
           <AccountCircle />
