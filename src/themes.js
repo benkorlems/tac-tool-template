@@ -4,7 +4,8 @@ import green from "@material-ui/core/colors/green";
 import deepOrange from "@material-ui/core/colors/deepOrange";
 import indigo from "@material-ui/core/colors/indigo";
 import orange from "@material-ui/core/colors/orange";
-import { grey } from "@material-ui/core/colors";
+import grey from "@material-ui/core/colors/grey";
+import red from "@material-ui/core/colors/red";
 
 const defaultContentTheme = {
   direction: "ltr",
@@ -17,7 +18,7 @@ const defaultContentTheme = {
   },
   palette: {
     type: "light",
-    primary: lightBlue,
+    primary: red,
     secondary: grey
   },
   status: {
@@ -27,7 +28,7 @@ const defaultContentTheme = {
     MuiAppBar: {
       colorDefault: {
         backgroundColor: "#FFF",
-        color: "#000"
+        color: "#d32f2f"
       }
     }
   }
@@ -63,7 +64,7 @@ const darkContentTheme = {
   },
   palette: {
     type: "light",
-    primary: lightBlue,
+    primary: "#e53935",
     secondary: pink
   },
   status: {

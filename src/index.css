@@ -75,6 +75,19 @@ body {
   }
 }
 
+/* Enlarge img on Hover */
+.ont-img {
+  position: relative;
+  opacity: 1;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.ont-img:hover {
+  transform: scale(1.2, 1.2); /** default is 1, scale it to 1.5 */
+  opacity: 1;
+}
+
 /* Led Styling */
 .ont-status .card-box {
   max-height: 340px;
@@ -89,11 +102,13 @@ body {
   display: flex;
   justify-content: space-evenly;
   font-size: 12px;
+  margin-top: 2em;
 }
 .led-row2 {
   display: flex;
   justify-content: space-evenly;
   font-size: 12px;
+  margin-bottom: 2em;
 }
 .led {
   width: 12px;
