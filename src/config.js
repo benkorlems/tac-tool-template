@@ -25,7 +25,7 @@ export const menuItems = [
   },
   {
     title: "Logout",
-    href: "/",
+    href: "/login",
     icon: <ArrowBack style={iconStyle} />
   }
 ];
