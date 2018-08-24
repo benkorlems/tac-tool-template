@@ -1,0 +1,44 @@
+[
+  {
+    "port": "Eth1",
+    "configStatus": "True",
+    "adminStatus": "True",
+    "operationalStatus": "True",
+    "speed": "Full/1Gbps"
+  },
+  {
+    "port": "Eth2",
+    "configStatus": "True",
+    "adminStatus": "True",
+    "operationalStatus": "True",
+    "speed": "Full/1Gbps"
+  },
+  {
+    "port": "Eth3",
+    "configStatus": "True",
+    "adminStatus": "True",
+    "operationalStatus": "True",
+    "speed": "Full/1Gbps"
+  },
+  {
+    "port": "Eth4",
+    "configStatus": "True",
+    "adminStatus": "True",
+    "operationalStatus": "True",
+    "speed": "Full/1Gbps"
+  },
+  {
+    "port": "Port 1",
+    "configStatus": "True",
+    "adminStatus": "True",
+    "operationalStatus": "True",
+    "speed": "Full/1Gbps"
+  },
+  {
+    "port": "Port 2",
+    "configStatus": "True",
+    "adminStatus": "True",
+    "operationalStatus": "True",
+    "speed": "Full/1Gbps"
+  }
+]
