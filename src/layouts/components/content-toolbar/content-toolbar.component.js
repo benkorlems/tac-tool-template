@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import compose from "recompose/compose";
@@ -8,17 +8,10 @@ import compose from "recompose/compose";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import withTheme from "@material-ui/core/styles/withTheme";
 import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import Switch from "@material-ui/core/Switch";
-import red from "@material-ui/core/colors/red";
 
-import AppsIcon from "@material-ui/icons/Apps";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
@@ -32,12 +25,6 @@ import {
   changeTheme,
   changeThemeDirection
 } from "../../../actions/theme.actions";
-
-// Menu Items
-import { menuItems } from "../../../config";
-
-// Themes
-import themes from "../../../themes";
 
 function setTitle() {
   return "iTAC Diagnostic Tool";
@@ -53,11 +40,6 @@ class ContentToolbar extends React.Component {
 
   handleOpenLayoutClick = event => {
     this.setState({ layoutMenuEl: event.currentTarget, layoutMenuOpen: true });
-  };
-
-  handleSelectLayoutClick = (event, layout) => {
-    this.props.updateLayout(layout);
-    this.setState({ layoutMenuEl: null, layoutMenuOpen: false });
   };
 
   handleCloseLayoutClick = () => {
@@ -103,30 +85,7 @@ class ContentToolbar extends React.Component {
           {setTitle() || "Route Not Found"}
         </Typography>
         <span className="portal-flex" />
-        <IconButton
-          color="inherit"
-          aria-label="change theme"
-          onClick={this.handleOpenThemeClick}
-        />
-        <IconButton
-          color="inherit"
-          aria-label="change layout"
-          onClick={this.handleOpenLayoutClick}
-        >
-          <AppsIcon />
-        </IconButton>
-        <Menu
-          id="layout-menu"
-          anchorEl={this.state.layoutMenuEl}
-          open={this.state.layoutMenuOpen}
-          onClose={this.handleCloseLayoutClick}
-        >
-          <MenuItem
-            onClick={event => this.handleSelectLayoutClick(event, "classic")}
-          >
-            Logout
-          </MenuItem>
-        </Menu>
+
         <IconButton color="inherit" aria-label="user account">
           <AccountCircle />
         </IconButton>

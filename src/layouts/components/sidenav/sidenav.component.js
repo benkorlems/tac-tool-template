@@ -3,14 +3,12 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import compose from "recompose/compose";
 import { withRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 // Material components
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import AppBar from "@material-ui/core/AppBar";
 import Drawer from "@material-ui/core/Drawer";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
@@ -50,7 +48,6 @@ const Sidenav = props => {
               src={logoImage}
               className={scss["portal-toolbar-brand"]}
               alt="logo"
-              Link
               to="#"
             />
           </Toolbar>

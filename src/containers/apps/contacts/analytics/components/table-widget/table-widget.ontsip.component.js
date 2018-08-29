@@ -1,16 +1,11 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import TablePagination from "@material-ui/core/TablePagination";
 import TableFooter from "@material-ui/core/TableFooter";
-import ScrollAlarmDialog from "../../components/scroll-dialog-widget/scroll-dialog.alarms.component";
-import ScrollSessionDialog from "../../components/scroll-dialog-widget/scroll-dialog.session.component";
 
 import portStatusData from "../../../../../../assets/data/dashboards/port-status-data.json";
 
@@ -33,10 +28,9 @@ class TableWidget extends React.Component {
           <TableHead>
             <TableRow>
               <TableCell>Port</TableCell>
-              <TableCell>Configuration State</TableCell>
-              <TableCell>Admin State</TableCell>
-              <TableCell>Operational Status</TableCell>
-              <TableCell>Speed/Duplex</TableCell>
+              <TableCell>Number</TableCell>
+              <TableCell>Register</TableCell>
+              <TableCell>Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -47,19 +41,12 @@ class TableWidget extends React.Component {
                 </TableCell>
                 <TableCell>{n.configStatus}</TableCell>
                 <TableCell>{n.adminStatus}</TableCell>
-                <TableCell>{n.operationalStatus}</TableCell>
-                <TableCell>{n.speed}</TableCell>
+                <TableCell>{n.adminStatus}</TableCell>
               </TableRow>
             ))}
           </TableBody>
           <TableFooter />
         </Table>
-        <span>
-          <ScrollAlarmDialog />
-        </span>
-        <span>
-          <ScrollSessionDialog />
-        </span>
       </div>
     );
   }

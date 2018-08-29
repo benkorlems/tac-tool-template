@@ -1,19 +1,12 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableFooter from "@material-ui/core/TableFooter";
 
 import genericSearchData from "../../../../../../assets/data/dashboards/generic-search.json";
-import paidSearchData from "../../../../../../assets/data/dashboards/paid-search.json";
-
-import ScrollDialog from "../../components/scroll-dialog-widget/scroll-dialog.component";
 
 import scss from "./table-widget.module.scss";
 
@@ -50,7 +43,6 @@ class TableWidget extends React.Component {
     return (
       <div className={scss["portal-chart-tabs"]}>
         <Table>
-          <TableHead />
           <TableBody>
             {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

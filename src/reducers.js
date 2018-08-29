@@ -1,12 +1,14 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import themeReducer from './reducers/theme.reducer';
-import layoutReducer from './reducers/layout.reducer';
+import themeReducer from "./reducers/theme.reducer";
+import layoutReducer from "./reducers/layout.reducer";
+import authReducer from "./reducers/auth.reducer";
 
 // Combine with other reducers we may add in the future
-const todoApp = combineReducers({
+const rootReducer = combineReducers({
   theme: themeReducer,
-  layout: layoutReducer
+  layout: layoutReducer,
+  auth: authReducer
 });
 
-export default todoApp;
+export default rootReducer;
