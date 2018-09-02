@@ -12,22 +12,39 @@ import genericSearchData from "../../../../../../assets/data/dashboards/generic-
 
 import scss from "./table-widget.module.scss";
 
-const tabs = [
-  {
-    title: "Customer"
-  },
-  {
-    title: "Details"
-  }
-];
-
 class TableWidget extends React.Component {
   state = {
     activeTabIndex: 0,
     page: 0,
     rowsPerPage: 7,
-    data: genericSearchData
+    data: [],
+    contact: null,
+    formatedData: []
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const field_names = [
+      "Admin State",
+      "Operational State",
+      "OLT Rx Power",
+      "Rx Power",
+      "Voice IP",
+      "VLAN",
+      "Sync State",
+      "Public IP",
+      "Provisioned Bandwidth",
+      "OLT",
+      "Port",
+      "MST",
+      "ONT",
+      "ONT network status"
+    ];
+    let formatted = [];
+    Object.keys(nextProps.fiber_data).map((c, i) => {
+      formatted.push({ field: field_names[i], value: nextProps.fiber_data[c] });
+    });
+    return { data: formatted };
+  }
 
   handleChangePage = (event, page) => {
     this.setState({ page });
@@ -48,10 +65,10 @@ class TableWidget extends React.Component {
           <TableBody>
             {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map(n => (
-                <TableRow key={n.url}>
-                  <TableCell>{n.url}</TableCell>
-                  <TableCell>{n.views}</TableCell>
+              .map((n, i) => (
+                <TableRow key={i}>
+                  <TableCell>{n.field}</TableCell>
+                  <TableCell>{n.value}</TableCell>
                 </TableRow>
               ))}
           </TableBody>

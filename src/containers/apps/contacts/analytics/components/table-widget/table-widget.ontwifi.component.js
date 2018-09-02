@@ -20,7 +20,7 @@ class TableWidget extends React.Component {
   };
 
   render() {
-    const { rowsPerPage, page, data } = this.state;
+    const { data } = this.state;
 
     return (
       <div className={scss["portal-chart-tabs"]}>

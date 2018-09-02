@@ -1,7 +1,6 @@
 import {
   authenticating,
   authenticated,
-  logout,
   setError,
   setUser
 } from "../actions/auth.actions";

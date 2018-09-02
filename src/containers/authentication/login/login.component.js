@@ -7,6 +7,7 @@ import {
   logoutUser,
   clearError
 } from "../../../actionCreators/authActionCreators";
+import { fetchRetail } from "../../../actionCreators/fetchRetailActionCreators";
 
 import PropTypes from "prop-types";
 import compose from "recompose/compose";
@@ -69,8 +70,8 @@ class Login extends Component {
 
   handleLogin() {
     const userData = {
-      email: this.state.email,
-      password: this.state.password
+      email: this.state.email.trim(),
+      password: this.state.password.trim()
     };
     this.props.loginUser(userData);
   }
@@ -191,7 +192,8 @@ const mapDispatchToProps = dispatch => {
   return {
     loginUser: bindActionCreators(loginUser, dispatch),
     logoutUser: bindActionCreators(logoutUser, dispatch),
-    clearError: bindActionCreators(clearError, dispatch)
+    clearError: bindActionCreators(clearError, dispatch),
+    fetchRetail: bindActionCreators(fetchRetail, dispatch)
   };
 };
 

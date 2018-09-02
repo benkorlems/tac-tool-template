@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import compose from "recompose/compose";
@@ -50,7 +50,7 @@ class ContentToolbar extends React.Component {
     this.setState({ themeMenuEl: event.currentTarget, themeMenuOpen: true });
   };
 
-  handleSelectThemeClick = (event, selectedTheme) => {
+  handleSelectThemeClick = selectedTheme => {
     this.props.changeTheme(selectedTheme.theme);
     this.setState({ themeMenuEl: null, themeMenuOpen: false });
   };
@@ -59,7 +59,7 @@ class ContentToolbar extends React.Component {
     this.setState({ themeMenuEl: null, themeMenuOpen: false });
   };
 
-  handleDirectionChange = (event, checked) => {
+  handleDirectionChange = checked => {
     this.props.changeThemeDirection({
       direction: checked === true ? "rtl" : "ltr"
     });
@@ -67,7 +67,7 @@ class ContentToolbar extends React.Component {
   };
 
   render() {
-    const { width, layout, location, theme } = this.props;
+    const { width, layout } = this.props;
 
     const showBurgerMenu = isWidthDown("sm", width) || !layout.sidenavOpen;
 

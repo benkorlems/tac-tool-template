@@ -37,11 +37,14 @@ class ScrollableTabsButtonAuto extends React.Component {
       contact: null
     };
   }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.contact !== prevState.contact) {
+      return { contact: nextProps.contact };
+    }
+  }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      contact: nextProps.selectedContact
-    });
+  componentDidUpdate() {
+    //console.log(this.state.contact);
   }
 
   handleChange = (event, value) => {
@@ -70,17 +73,17 @@ class ScrollableTabsButtonAuto extends React.Component {
         </AppBar>
         {value === 0 && (
           <TabContainer>
-            <AnalyticsStatusComponent />
+            <AnalyticsStatusComponent contact={this.state.contact} />
           </TabContainer>
         )}
         {value === 1 && (
           <TabContainer>
-            <AnalyticsOntComponent />
+            <AnalyticsOntComponent contact={this.state.contact} />
           </TabContainer>
         )}
         {value === 2 && (
           <TabContainer>
-            <AnalyticsRealtimeComponent />
+            <AnalyticsRealtimeComponent contact={this.state.contact} />
           </TabContainer>
         )}
       </div>

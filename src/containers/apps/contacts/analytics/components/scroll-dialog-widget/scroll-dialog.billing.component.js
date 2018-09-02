@@ -5,7 +5,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import ListDivider from "../list-widget/list-divider.component";
 
 class ScrollDialog extends React.Component {
   state = {
@@ -30,6 +29,7 @@ class ScrollDialog extends React.Component {
           style={{ width: "100%", height: "5%" }}
           label="Data Usage History"
           onClick={this.handleClickOpen()}
+          disabled
         >
           View Data Usage History
         </Button>
