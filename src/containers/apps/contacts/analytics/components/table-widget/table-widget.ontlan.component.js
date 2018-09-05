@@ -27,15 +27,25 @@ class TableWidget extends React.Component {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Interface</TableCell>
-              <TableCell>Sent</TableCell>
-              <TableCell>Recieved</TableCell>
+              <TableCell>
+                <span style={{ fontWeight: 700 }}>Interface</span>
+              </TableCell>
+              <TableCell>
+                <span style={{ fontWeight: 700 }}>Sent</span>
+              </TableCell>
+              <TableCell>
+                <span style={{ fontWeight: 700 }}>Recieved</span>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map(n => (
               <TableRow key={n.port}>
-                <TableCell component="th" scope="row">
+                <TableCell
+                  component="th"
+                  scope="row"
+                  style={{ fontWeight: 550 }}
+                >
                   {n.port}
                 </TableCell>
                 <TableCell>{n.configStatus}</TableCell>
