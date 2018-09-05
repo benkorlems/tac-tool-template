@@ -1,13 +1,11 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import TablePagination from "@material-ui/core/TablePagination";
+
 import TableFooter from "@material-ui/core/TableFooter";
 import ScrollAlarmDialog from "../../components/scroll-dialog-widget/scroll-dialog.alarms.component";
 import ScrollSessionDialog from "../../components/scroll-dialog-widget/scroll-dialog.session.component";
@@ -21,11 +19,18 @@ class TableWidget extends React.Component {
     activeTabIndex: 0,
     page: 0,
     rowsPerPage: 5,
-    data: portStatusData
+    data: portStatusData,
+    contact: ""
   };
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      contact: nextProps.contact
+    });
+  }
+
   render() {
-    const { rowsPerPage, page, data } = this.state;
+    const { data } = this.state;
 
     return (
       <div className={scss["portal-chart-tabs"]}>

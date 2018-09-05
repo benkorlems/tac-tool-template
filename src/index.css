@@ -87,6 +87,10 @@ body {
   transform: scale(1.2, 1.2); /** default is 1, scale it to 1.5 */
   opacity: 1;
 }
+.MuiSvgIcon-root-686 {
+  transform: scale(1.2, 1.2); /** default is 1, scale it to 1.5 */
+  opacity: 1;
+}
 
 /* Led Styling */
 .ont-status .card-box {

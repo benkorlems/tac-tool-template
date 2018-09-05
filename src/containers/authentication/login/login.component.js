@@ -7,6 +7,7 @@ import {
   logoutUser,
   clearError
 } from "../../../actionCreators/authActionCreators";
+import { fetchRetail } from "../../../actionCreators/fetchRetailActionCreators";
 
 import PropTypes from "prop-types";
 import compose from "recompose/compose";
@@ -51,6 +52,7 @@ class Login extends Component {
     this.onChange = this.onChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRequestAccess = this.handleRequestAccess.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
@@ -69,13 +71,19 @@ class Login extends Component {
 
   handleLogin() {
     const userData = {
-      email: this.state.email,
-      password: this.state.password
+      email: this.state.email.trim(),
+      password: this.state.password.trim()
     };
     this.props.loginUser(userData);
   }
   handleRequestAccess() {
     this.props.history.push("/register");
+  }
+
+  handleKeyPress(e) {
+    if (e.key == "Enter") {
+      this.handleLogin();
+    }
   }
 
   onChange(e) {
@@ -128,49 +136,51 @@ class Login extends Component {
             <Grid item sm={6} xs={12}>
               <Card className={scss.card}>
                 <CardContent>
-                  <TextField
-                    name="email"
-                    label="Email Address"
-                    fullWidth
-                    value={this.state.email}
-                    onChange={this.onChange}
-                    onClick={this.props.clearError}
-                  />
-                  <FormHelperText error="true">
-                    {this.state.error}
-                  </FormHelperText>
-                  <TextField
-                    name="password"
-                    label="Password"
-                    fullWidth
-                    margin="normal"
-                    type="password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                    onClick={this.props.clearError}
-                  />
-                  <FormHelperText error="true">
-                    {this.state.error}
-                  </FormHelperText>
+                  <form onKeyDown={this.handleKeyPress}>
+                    <TextField
+                      name="email"
+                      label="Email Address"
+                      fullWidth
+                      value={this.state.email}
+                      onChange={this.onChange}
+                      onClick={this.props.clearError}
+                    />
+                    <FormHelperText error="true">
+                      {this.state.error}
+                    </FormHelperText>
+                    <TextField
+                      name="password"
+                      label="Password"
+                      fullWidth
+                      margin="normal"
+                      type="password"
+                      value={this.state.password}
+                      onChange={this.onChange}
+                      onClick={this.props.clearError}
+                    />
+                    <FormHelperText error="true">
+                      {this.state.error}
+                    </FormHelperText>
+                    <CardActions className={scss["login-actions"]}>
+                      {this.state.authenticating ? (
+                        <Button color="primary" variant="raised" disabled>
+                          Logging in ...
+                        </Button>
+                      ) : (
+                        <Button
+                          color="primary"
+                          variant="raised"
+                          onClick={this.handleLogin}
+                        >
+                          Login
+                        </Button>
+                      )}
+                      <Button onClick={this.handleForgotPassword}>
+                        Forgot Password
+                      </Button>
+                    </CardActions>
+                  </form>
                 </CardContent>
-                <CardActions className={scss["login-actions"]}>
-                  {this.state.authenticating ? (
-                    <Button color="primary" variant="raised" disabled>
-                      Logging in ...
-                    </Button>
-                  ) : (
-                    <Button
-                      color="primary"
-                      variant="raised"
-                      onClick={this.handleLogin}
-                    >
-                      Login
-                    </Button>
-                  )}
-                  <Button onClick={this.handleForgotPassword}>
-                    Forgot Password
-                  </Button>
-                </CardActions>
               </Card>
             </Grid>
           </Grid>
@@ -191,7 +201,8 @@ const mapDispatchToProps = dispatch => {
   return {
     loginUser: bindActionCreators(loginUser, dispatch),
     logoutUser: bindActionCreators(logoutUser, dispatch),
-    clearError: bindActionCreators(clearError, dispatch)
+    clearError: bindActionCreators(clearError, dispatch),
+    fetchRetail: bindActionCreators(fetchRetail, dispatch)
   };
 };
 

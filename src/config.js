@@ -1,7 +1,6 @@
 import React from "react";
 
 import HomeIcon from "@material-ui/icons/Home";
-import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
 import { ArrowBack } from "@material-ui/icons";
 
 import themes from "./themes";
