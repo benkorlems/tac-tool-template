@@ -10,7 +10,7 @@ import axios from "axios";
 export const fetchFiber = serial => dispatch => {
   dispatch(fetching_fiber(true));
   axios
-    .get("http://62.173.38.4:5000/api/ont/ont_status", {
+    .get("http://localhost:5000/api/ont/ont_status", {
       params: {
         serial: serial
       }

@@ -42,6 +42,7 @@ class ScrollDialog extends React.Component {
   } */
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.fiber);
     let olt_details = { olt: "", port: "", slot: "" };
     olt_details.olt = nextProps.fiber.fiber_data.olt;
     olt_details.port = nextProps.fiber.fiber_data.port;
@@ -59,7 +60,7 @@ class ScrollDialog extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state.fault_alarm_data);
+    //console.log(this.state.fault_alarm_data);
   }
 
   handleClickOpen = scroll => () => {
@@ -125,7 +126,9 @@ class ScrollDialog extends React.Component {
                     </TableRow>
                   ))
                 ) : (
-                  <div>No Fault alarms for this ONT</div>
+                  <TableRow>
+                    <TableCell>No Fault alarms for this ONT</TableCell>
+                  </TableRow>
                 )}
               </TableBody>
             </Table>

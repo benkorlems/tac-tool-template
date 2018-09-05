@@ -38,7 +38,8 @@ class TableWidget extends React.Component {
       "Port",
       "MST",
       "ONT",
-      "ONT network status"
+      "ONT network status",
+      "Timestamp"
     ];
     let formatted = [];
 
@@ -75,7 +76,7 @@ class TableWidget extends React.Component {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((n, i) => (
                   <TableRow key={i}>
-                    <TableCell>{n.field}</TableCell>
+                    <TableCell style={{ fontWeight: 550 }}>{n.field}</TableCell>
                     <TableCell>{n.value}</TableCell>
                   </TableRow>
                 ))}

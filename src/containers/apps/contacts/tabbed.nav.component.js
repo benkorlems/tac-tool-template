@@ -66,9 +66,9 @@ class ScrollableTabsButtonAuto extends React.Component {
             centered
             fullWidth
           >
-            <Tab label="Billing" />
+            <Tab label="SUMMARY" />
             <Tab label="ONT" />
-            <Tab label="Real-time Status" />
+            <Tab label="REAL-TIME STATUS" />
           </Tabs>
         </AppBar>
         {value === 0 && (

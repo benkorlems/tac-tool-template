@@ -25,18 +25,27 @@ class TableWidget extends React.Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.contact.last_bill) {
+    let last_bill = moment
+      .unix(nextProps.contact.last_bill)
+      .format("MMMM Do YYYY");
+    let bill = moment.unix(nextProps.contact.bill).format("MMMM Do YYYY");
+    let susp = moment.unix(nextProps.contact.susp).format("MMMM Do YYYY");
+    if (last_bill == "Invalid date") {
+      nextProps.contact.last_bill = "Unavailable";
+    } else if (bill == "Invalid date") {
+      nextProps.contact.bill = "Unavailable";
+    } else if (susp == "Invalid date") {
+      nextProps.contact.susp = "Unavailable";
+    } else {
       nextProps.contact.last_bill = moment
         .unix(nextProps.contact.last_bill)
         .format("MMMM Do YYYY");
-    }
-    if (nextProps.contact.bill) {
       nextProps.contact.bill = moment
         .unix(nextProps.contact.bill)
         .format("MMMM Do YYYY");
-    } else {
-      nextProps.contact.bill = "";
-      nextProps.contact.last_bill = "";
+      nextProps.contact.susp = moment
+        .unix(nextProps.contact.susp)
+        .format("MMMM Do YYYY");
     }
 
     const field_names = [
@@ -79,7 +88,7 @@ class TableWidget extends React.Component {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((n, i) => (
                 <TableRow key={i}>
-                  <TableCell>{n.field}</TableCell>
+                  <TableCell style={{ fontWeight: 550 }}>{n.field}</TableCell>
                   <TableCell>{n.value}</TableCell>
                 </TableRow>
               ))}
