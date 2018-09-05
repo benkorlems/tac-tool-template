@@ -10,7 +10,7 @@ import axios from "axios";
 export const fetchRetail = () => dispatch => {
   dispatch(fetching_all_retail(true));
   axios
-    .get("http://localhost:5000/api/billing/all_billing")
+    .get("http://62.173.38.4:5000/api/billing/all_billing")
     .then(res => {
       dispatch(fetched_all_retail(res.data));
       dispatch(fetching_all_retail(false));

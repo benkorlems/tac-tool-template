@@ -72,6 +72,15 @@ class Analytics extends React.Component {
               >
                 Billing
               </Typography>
+              <Typography>
+                {this.state.contact.latest_table ? (
+                  <div variant="caption">
+                    Last Billing: {this.state.contact.latest_table}
+                  </div>
+                ) : (
+                  <div>{null}</div>
+                )}
+              </Typography>
               <Paper className={this.props.classes.portalWidgetContent}>
                 <BillingTableWidget contact={this.state.contact} />
               </Paper>
