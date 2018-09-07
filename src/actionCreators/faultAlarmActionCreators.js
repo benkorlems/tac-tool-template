@@ -9,7 +9,7 @@ import axios from "axios";
 export const fetchFaultAlarm = olt_details => dispatch => {
   dispatch(fetching_fault_alarm(true));
   axios
-    .get("http://62.173.38.4:5000/api/alarms/get_alarms", {
+    .get("http://localhost:5000/api/alarms/get_alarms", {
       params: {
         olt: olt_details.olt,
         slot: olt_details.slot,

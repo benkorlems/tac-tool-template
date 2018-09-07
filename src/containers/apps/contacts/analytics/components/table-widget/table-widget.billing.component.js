@@ -59,7 +59,8 @@ class TableWidget extends React.Component {
       "Serial No.",
       "Phone",
       "Data Allowance",
-      "Data Used"
+      "Data Used",
+      "Last Billing Record"
     ];
     let formatted = [];
     Object.keys(nextProps.contact).map((c, i) => {

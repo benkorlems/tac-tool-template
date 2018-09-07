@@ -125,7 +125,6 @@ class ContactsList extends React.Component {
 
   createSearchTextField = () => {
     const { classes } = this.props;
-
     return (
       <div className={classes.searchContainer}>
         <form onKeyPress={this.handleKeyPress.bind(this)}>

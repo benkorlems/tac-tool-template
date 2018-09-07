@@ -5,6 +5,8 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 
+import moment from "moment";
+
 import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableFooter from "@material-ui/core/TableFooter";
@@ -17,9 +19,8 @@ class TableWidget extends React.Component {
     activeTabIndex: 0,
     page: 0,
     rowsPerPage: 7,
-    data: [],
+    data: null,
     contact: null,
-    formatedData: [],
     fiber_error: null
   };
 
@@ -35,17 +36,18 @@ class TableWidget extends React.Component {
       "Public IP",
       "Provisioned Bandwidth",
       "OLT",
+      "Slot",
       "Port",
-      "MST",
       "ONT",
       "ONT network status",
-      "Timestamp"
+      "Last poll"
     ];
     let formatted = [];
 
     if (nextProps.fiber.fetching_fiber) {
-      return { data: [] };
+      return { data: null };
     }
+
     Object.keys(nextProps.fiber.fiber_data).map((c, i) => {
       formatted.push({
         field: field_names[i],
@@ -99,7 +101,7 @@ class TableWidget extends React.Component {
         </div>
       );
     } else {
-      return <Loader />;
+      return <Loader size={40} />;
     }
   }
 }

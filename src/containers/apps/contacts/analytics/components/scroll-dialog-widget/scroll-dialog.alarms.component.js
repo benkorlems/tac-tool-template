@@ -42,7 +42,7 @@ class ScrollDialog extends React.Component {
   } */
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.fiber);
+    //console.log(nextProps.fiber);
     let olt_details = { olt: "", port: "", slot: "" };
     olt_details.olt = nextProps.fiber.fiber_data.olt;
     olt_details.port = nextProps.fiber.fiber_data.port;

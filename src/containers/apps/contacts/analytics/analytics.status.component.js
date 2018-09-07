@@ -36,21 +36,12 @@ class Analytics extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.contact !== prevState.contact) {
-      let last_poll = "";
-      last_poll = moment
-        .unix(nextProps.fiber.fiber_data.last_poll)
-        .format("DD/MM/YYYY HH:MM:SS");
-      if (last_poll == "Invalid date") {
-        last_poll = "Not Available";
-      }
-      return {
-        contact: nextProps.contact,
-        fiber_data: nextProps.fiber.fiber_data,
-        fiber_error: nextProps.fiber.fiber_error,
-        last_poll: last_poll
-      };
-    } else return null;
+    return {
+      contact: nextProps.contact,
+      fiber_data: nextProps.fiber.fiber_data,
+      fiber_error: nextProps.fiber.fiber_error,
+      last_poll: nextProps.fiber.fiber_data.last_poll
+    };
   }
 
   render() {
@@ -74,11 +65,11 @@ class Analytics extends React.Component {
               </Typography>
               <Typography>
                 {this.state.contact.latest_table ? (
-                  <div variant="caption">
+                  <span variant="caption">
                     Last Billing: {this.state.contact.latest_table}
-                  </div>
+                  </span>
                 ) : (
-                  <div>{null}</div>
+                  <span>{null}</span>
                 )}
               </Typography>
               <Paper className={this.props.classes.portalWidgetContent}>
@@ -95,16 +86,18 @@ class Analytics extends React.Component {
               className={this.props.classes.portalWidget}
             >
               <Typography
-                variant="heading"
+                variant="subheading"
                 className={this.props.classes.portalWidgetHeading}
               >
                 Fiber
               </Typography>
               <Typography>
                 {this.state.last_poll ? (
-                  <div variant="caption">Last Poll: {this.state.last_poll}</div>
+                  <span variant="caption">
+                    Last Poll: {this.state.last_poll}
+                  </span>
                 ) : (
-                  <div>{null}</div>
+                  <span>{null}</span>
                 )}
               </Typography>
               <Paper className={this.props.classes.portalWidgetContent}>
