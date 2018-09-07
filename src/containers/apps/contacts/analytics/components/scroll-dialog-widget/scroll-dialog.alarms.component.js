@@ -106,32 +106,30 @@ class ScrollDialog extends React.Component {
             Historical Fault Alarms
           </DialogTitle>
           <DialogContent>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Trap Id</TableCell>
-                  <TableCell>Message</TableCell>
-                  <TableCell>Action</TableCell>
-                  <TableCell>Trap State</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {this.state.fault_alarm_data ? (
-                  this.state.fault_alarm_data.map(n => (
+            {this.state.fault_alarm_data ? (
+              this.state.fault_alarm_data.map(n => (
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Trap Id</TableCell>
+                      <TableCell>Message</TableCell>
+                      <TableCell>Action</TableCell>
+                      <TableCell>Trap State</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
                     <TableRow>
                       <TableCell>{n.trap_id}</TableCell>
                       <TableCell>{n.message}</TableCell>
                       <TableCell>{n.action}</TableCell>
                       <TableCell>{n.trap_state}</TableCell>
                     </TableRow>
-                  ))
-                ) : (
-                  <TableRow>
-                    <TableCell>No Fault alarms for this ONT</TableCell>
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
+                  </TableBody>
+                </Table>
+              ))
+            ) : (
+              <div>No Fault Alarms over the last two weeks</div>
+            )}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

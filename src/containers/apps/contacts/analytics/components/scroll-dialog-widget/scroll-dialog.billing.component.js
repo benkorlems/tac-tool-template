@@ -41,7 +41,7 @@ class ScrollDialog extends React.Component {
           <DialogTitle id="scroll-dialog-title">Data Usage History</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              <div>No Data</div>
+              <div>No Data Available Yet</div>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
